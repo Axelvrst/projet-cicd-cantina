@@ -1,0 +1,23 @@
+name: Cantina
+on: [push, pull_request]
+jobs:
+  cantina-compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt --assume-yes install maven
+      - run: mvn compile
+
+  cantina-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt --assume-yes install maven
+      - run: mvn test > javatest.txt
+      - run: mvn verify > javatest.txt
+
+      - name: Upload Tests Resultats
+        uses: actions/upload-artifact@v2
+        with:
+          name: Tests Resultats
+          path: javatest.txt
