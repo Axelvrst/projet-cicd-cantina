@@ -1,5 +1,5 @@
 name: Cantina
-on: [pull, pull_request]
+on: [push, pull_request]
 jobs:
   cantina-compile:
     runs-on: ubuntu-latest
