@@ -7,3 +7,17 @@ jobs:
       - uses: actions/checkout@v2
       - run: sudo apt --assume-yes install maven
       - run: mvn compile
+
+  cantina-test-unitaire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt --assume-yes install maven
+      - run: mvn test
+
+  cantina-test-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt --assume-yes install maven
+      - run: mvn verify
