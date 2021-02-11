@@ -4,7 +4,6 @@ jobs:
   cantina-compile:
     runs-on: ubuntu-latest
     steps:
-      - name: Cantina Compilation
       - uses: actions/checkout@v2
       - run: sudo apt --assume-yes install maven
       - run: mvn compile
@@ -12,7 +11,6 @@ jobs:
   cantina-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Maven test et verify
       - uses: actions/checkout@v2
       - run: sudo apt --assume-yes install maven
       - run: mvn test > javatest.txt
