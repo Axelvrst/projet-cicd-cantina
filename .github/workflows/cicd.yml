@@ -29,9 +29,11 @@ jobs:
   cantina-release:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt --assume-yes install maven
+
       - name: Checkout code
         uses: actions/checkout@v2
-        run: sudo apt --assume-yes install maven
 
       - name: Create Release
         id: create_release
