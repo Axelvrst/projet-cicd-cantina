@@ -1,0 +1,9 @@
+name : Cantina
+on : [push, pull_request]
+jobs:
+  cantina-compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt --assume-yes install maven
+      - run: mvn compile
