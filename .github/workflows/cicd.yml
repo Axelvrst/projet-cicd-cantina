@@ -4,20 +4,25 @@ jobs:
   cantina-compile:
     runs-on: ubuntu-latest
     steps:
+      - name: Cantina Compilation
       - uses: actions/checkout@v2
       - run: sudo apt --assume-yes install maven
       - run: mvn compile
 
-  cantina-test-unitaire:
+  cantina-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: sudo apt --assume-yes install maven
-      - run: mvn test
 
-  cantina-test-integration:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: sudo apt --assume-yes install maven
-      - run: mvn verify
+      - name: Cantina Tests Unitaires
+      - run: mvn test > javatest.txt
+
+      - name: Cantina Tests Intégration
+      - run: mvn verify > javatest.txt
+
+      - name: Upload Tests Resultats
+        uses: actions/upload-artifact@v2
+        with:
+          name: Tests Resultats
+          path: javatest.txt
