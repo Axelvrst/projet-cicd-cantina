@@ -1,0 +1,23 @@
+name : Cantina
+on : [push, pull_request]
+jobs:
+  cantina-compile:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt --assume-yes install maven
+      - run: mvn compile
+
+  cantina-test-unitaire:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt --assume-yes install maven
+      - run: mvn test
+
+  cantina-test-integration:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt --assume-yes install maven
+      - run: mvn verify
