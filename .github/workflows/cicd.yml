@@ -12,13 +12,16 @@ jobs:
   cantina-tests:
     runs-on: ubuntu-latest
     steps:
+      - name: Installation Maven
       - uses: actions/checkout@v2
       - run: sudo apt --assume-yes install maven
 
       - name: Cantina Tests Unitaires
+      - uses: actions/checkout@v2
       - run: mvn test > javatest.txt
 
       - name: Cantina Tests Intégration
+      - uses: actions/checkout@v2
       - run: mvn verify > javatest.txt
 
       - name: Upload Tests Resultats
