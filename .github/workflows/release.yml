@@ -1,4 +1,4 @@
-name: Cantina
+name: CantinaRelease
 on:
   push:
     branches:
